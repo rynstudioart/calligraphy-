@@ -1,426 +1,443 @@
-<!doctype html>
+<<!doctype html>
 <html lang="ro">
-<head><script>window["codeletBootstrap"]=JSON.parse('{"A":"A","B":"20260709-05-e5cead5"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-<title>Carte Digitală de Caligrafie</title>
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<script src="/_sdk/0179d719c431a79e.data_sdk.js" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
-<style>
-:root{
---ui-bg:#f4efe6; --ui-panel:#fffdf8; --ui-text:#3a3128; --ui-muted:#8a7d6b;
---ui-border:#e3d9c8; --ui-accent:#b4884d;
-}
-.theme-dark{
---ui-bg:#1c1a17; --ui-panel:#262320; --ui-text:#ece5d8; --ui-muted:#9a917f;
---ui-border:#3a352e; --ui-accent:#d6a662;
-}
-html,body{height:100%;}
-body{ font-family:'Work Sans',sans-serif; background:var(--ui-bg); color:var(--ui-text);
-overscroll-behavior:none; }
-.app-shell{ display:flex; flex-direction:column; height:calc(100 * min(var(--vh,1vh),1vh)); width:100%; }
-.toolbar{ background:var(--ui-panel); border-bottom:1px solid var(--ui-border); }
-.tool-btn{ display:inline-flex; align-items:center; justify-content:center; width:40px;height:40px;
-border-radius:10px; border:1px solid var(--ui-border); background:var(--ui-panel); color:var(--ui-text);
-cursor:pointer; transition:.15s; }
-.tool-btn:hover{ background:var(--ui-bg); }
-.tool-btn:focus-visible{ outline:2px solid var(--ui-accent); outline-offset:2px; }
-.tool-btn[aria-pressed="true"], .style-btn.active{ background:var(--ui-accent); color:#fff; border-color:var(--ui-accent); }
-.style-btn{ padding:6px 12px; border-radius:10px; border:1px solid var(--ui-border);
-background:var(--ui-panel); color:var(--ui-text); cursor:pointer; font-size:14px; transition:.15s; white-space:nowrap;}
-.style-btn:hover{ background:var(--ui-bg); }
-.style-btn:focus-visible{ outline:2px solid var(--ui-accent); outline-offset:2px; }
-.stage-wrap{ flex:1; overflow:hidden; position:relative; touch-action:none; background:var(--ui-bg); }
-.zoom-layer{ width:100%; height:100%; transition:transform .2s ease; transform-origin:center center; }
-.book-track{ display:flex; height:100%; transition:transform .45s cubic-bezier(.22,.61,.36,1); }
-.page{ flex:0 0 100%; height:100%; display:flex; align-items:center; justify-content:center; padding:12px; }
-.page-inner{ position:relative; max-width:min(900px,95%); width:100%; height:100%;
-display:flex; align-items:center; justify-content:center; }
-.page-frame{ position:relative; box-shadow:0 12px 40px rgba(0,0,0,.25); border-radius:6px; overflow:hidden;
-background:#fff; width:100%; height:100%; }
-.page-frame img{ display:block; width:100%; height:100%; object-fit:cover; }
-.page-frame canvas{ position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; }
-.footer-bar{ background:var(--ui-panel); border-top:1px solid var(--ui-border); }
-input[type=range]{ accent-color:var(--ui-accent); }
-.divider{ width:1px; height:28px; background:var(--ui-border); }
-@media print{
-.toolbar,.footer-bar{ display:none !important; }
-.page:not(.print-active){ display:none !important; }
-.book-track{ transform:none !important; }
-.zoom-layer{ transform:none !important; }
-.page-frame{ box-shadow:none; }
-}
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260709-05-e5cead5"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Carte Digitală de Caligrafie</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+  <style>
+  :root{
+    --ui-bg:#f4efe6; --ui-panel:#fffdf8; --ui-text:#3a3128; --ui-muted:#8a7d6b;
+    --ui-border:#e3d9c8; --ui-accent:#b4884d;
+  }
+  .theme-dark{
+    --ui-bg:#1c1a17; --ui-panel:#262320; --ui-text:#ece5d8; --ui-muted:#9a917f;
+    --ui-border:#3a352e; --ui-accent:#d6a662;
+  }
+  html,body{height:100%;}
+  body{ font-family:'Work Sans',sans-serif; background:var(--ui-bg); color:var(--ui-text);
+    overscroll-behavior:none; }
+  .app-shell{ display:flex; flex-direction:column; height:calc(100 * min(var(--vh,1vh),1vh)); width:100%; }
+  .toolbar{ background:var(--ui-panel); border-bottom:1px solid var(--ui-border); }
+  .tool-btn{ display:inline-flex; align-items:center; justify-content:center; width:40px;height:40px;
+    border-radius:10px; border:1px solid var(--ui-border); background:var(--ui-panel); color:var(--ui-text);
+    cursor:pointer; transition:.15s; }
+  .tool-btn:hover{ background:var(--ui-bg); }
+  .tool-btn:focus-visible{ outline:2px solid var(--ui-accent); outline-offset:2px; }
+  .tool-btn[aria-pressed="true"], .style-btn.active{ background:var(--ui-accent); color:#fff; border-color:var(--ui-accent); }
+  .style-btn{ padding:6px 12px; border-radius:10px; border:1px solid var(--ui-border);
+    background:var(--ui-panel); color:var(--ui-text); cursor:pointer; font-size:14px; transition:.15s; white-space:nowrap;}
+  .style-btn:hover{ background:var(--ui-bg); }
+  .style-btn:focus-visible{ outline:2px solid var(--ui-accent); outline-offset:2px; }
+  .stage-wrap{ flex:1; overflow:hidden; position:relative; touch-action:none; background:var(--ui-bg); }
+  .zoom-layer{ width:100%; height:100%; transition:transform .2s ease; transform-origin:center center; }
+  .book-track{ display:flex; height:100%; transition:transform .45s cubic-bezier(.22,.61,.36,1); }
+  .page{ flex:0 0 100%; height:100%; display:flex; align-items:center; justify-content:center; padding:12px; }
+  .page-inner{ position:relative; max-width:min(900px,95%); width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center; }
+  .page-frame{ position:relative; box-shadow:0 12px 40px rgba(0,0,0,.25); border-radius:6px; overflow:hidden;
+    background:#fff; width:100%; height:100%; }
+  .page-frame img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .page-frame canvas{ position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; }
+  .footer-bar{ background:var(--ui-panel); border-top:1px solid var(--ui-border); }
+  input[type=range]{ accent-color:var(--ui-accent); }
+  .divider{ width:1px; height:28px; background:var(--ui-border); }
+  @media print{
+    .toolbar,.footer-bar{ display:none !important; }
+    .page:not(.print-active){ display:none !important; }
+    .book-track{ transform:none !important; }
+    .zoom-layer{ transform:none !important; }
+    .page-frame{ box-shadow:none; }
+  }
 </style>
-<script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
-</head>
-<body data-template-id="__page-root">
-<div class="app-shell"><!-- ===== Toolbar ===== -->
-<header class="toolbar canva-header px-3 py-2 flex-shrink-0">
-<div class="flex items-center gap-3 flex-wrap">
-<h1 data-template-id="tool-title" class="canva-text font-bold mr-2" style="font-family:'Fraunces',serif;"></h1>
-<div class="flex items-center gap-2"><label data-template-id="color-label" for="color-input" class="canva-text text-sm"></label> <input id="color-input" type="color" value="#2b2b2b" class="w-9 h-9 rounded-lg border border-[var(--ui-border)] cursor-pointer bg-transparent" aria-label="Culoare">
-</div>
-<div class="divider"></div><!-- Brush styles (bound) -->
-<div class="flex items-center gap-1.5 flex-wrap" role="group" aria-label="Stiluri"><button data-template-id="style-pen" class="canva-button style-btn active" data-style="pen" type="button"></button> <button data-template-id="style-pencil" class="canva-button style-btn" data-style="pencil" type="button"></button> <button data-template-id="style-marker" class="canva-button style-btn" data-style="marker" type="button"></button> <button data-template-id="style-brush" class="canva-button style-btn" data-style="brush" type="button"></button> <button data-template-id="style-calligraphy" class="canva-button style-btn" data-style="calligraphy" type="button"></button>
-</div>
-<div class="divider"></div>
-<div class="flex items-center gap-2"><label data-template-id="thickness-label" for="thickness-input" class="canva-text text-sm"></label> <input id="thickness-input" type="range" min="1" max="40" value="4" class="w-24" aria-label="Grosime">
-</div>
-<div class="flex items-center gap-2"><label data-template-id="opacity-label" for="opacity-input" class="canva-text text-sm"></label> <input id="opacity-input" type="range" min="10" max="100" value="100" class="w-24" aria-label="Opacitate">
-</div>
-<div class="divider"></div>
-<div class="flex items-center gap-1.5"><button data-template-id="btn-undo" id="btn-undo" class="canva-button tool-btn" type="button" title="Anulează" aria-label="Anulează"><i data-lucide="undo-2"></i></button> <button data-template-id="btn-redo" id="btn-redo" class="canva-button tool-btn" type="button" title="Refă" aria-label="Refă"><i data-lucide="redo-2"></i></button> <button data-template-id="btn-clear" id="btn-clear" class="canva-button tool-btn" type="button" title="Șterge desenul" aria-label="Șterge desenul"><i data-lucide="eraser"></i></button> <button data-template-id="btn-zoomin" id="btn-zoomin" class="canva-button tool-btn" type="button" title="Mărește" aria-label="Mărește"><i data-lucide="zoom-in"></i></button> <button data-template-id="btn-zoomout" id="btn-zoomout" class="canva-button tool-btn" type="button" title="Micșorează" aria-label="Micșorează"><i data-lucide="zoom-out"></i></button> <button data-template-id="btn-fullscreen" id="btn-fullscreen" class="canva-button tool-btn" type="button" title="Ecran complet" aria-label="Ecran complet"><i data-lucide="maximize"></i></button> <button data-template-id="btn-print" id="btn-print" class="canva-button tool-btn" type="button" title="Printează PDF" aria-label="Printează PDF"><i data-lucide="printer"></i></button> <button data-template-id="btn-theme" id="btn-theme" class="canva-button tool-btn" type="button" title="Temă" aria-label="Schimbă tema"><i data-lucide="moon"></i></button>
-</div>
-</div>
-</header><!-- ===== Book stage ===== -->
-<main class="stage-wrap" id="stage">
-<div class="zoom-layer" id="zoomLayer">
-<div class="book-track" id="track" data-template-id="book-stage">
-<section class="page" data-index="0">
-<div class="page-inner">
-<div class="page-frame"><img data-template-id="page-1-image" class="canva-image" loading="lazy">
-<canvas class="draw-canvas" data-index="0"></canvas>
-</div>
-</div>
-</section>
-<section class="page" data-index="1">
-<div class="page-inner">
-<div class="page-frame"><img data-template-id="page-2-image" class="canva-image" loading="lazy">
-<canvas class="draw-canvas" data-index="1"></canvas>
-</div>
-</div>
-</section>
-<section class="page" data-index="2">
-<div class="page-inner">
-<div class="page-frame"><img data-template-id="page-3-image" class="canva-image" loading="lazy">
-<canvas class="draw-canvas" data-index="2"></canvas>
-</div>
-</div>
-</section>
-<section class="page" data-index="3">
-<div class="page-inner">
-<div class="page-frame"><img data-template-id="page-4-image" class="canva-image" loading="lazy">
-<canvas class="draw-canvas" data-index="3"></canvas>
-</div>
-</div>
-</section>
-<section class="page" data-index="4">
-<div class="page-inner">
-<div class="page-frame"><img data-template-id="page-5-image" class="canva-image" loading="lazy">
-<canvas class="draw-canvas" data-index="4"></canvas>
-</div>
-</div>
-</section>
-</div>
-</div>
-</main><!-- ===== Footer ===== -->
-<footer class="footer-bar canva-footer px-4 py-2 flex items-center justify-between gap-3 flex-shrink-0"><button data-template-id="btn-prev" id="btn-prev" class="canva-button tool-btn" type="button" aria-label="Pagina anterioară"><i data-lucide="chevron-left"></i></button>
-<div class="flex items-center gap-4"><span id="page-indicator" class="text-sm font-medium" aria-live="polite">1 / 5</span> <span id="save-status" class="text-xs" style="color:var(--ui-muted)" aria-live="polite"></span>
-</div><button data-template-id="btn-next" id="btn-next" class="canva-button tool-btn" type="button" aria-label="Pagina următoare"><i data-lucide="chevron-right"></i></button>
-</footer>
-</div>
-<script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
-<script>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div class="app-shell"><!-- ===== Toolbar ===== -->
+   <header class="toolbar canva-header px-3 py-2 flex-shrink-0">
+    <div class="flex items-center gap-3 flex-wrap">
+     <h1 data-template-id="tool-title" class="canva-text font-bold mr-2" style="font-family:'Fraunces',serif;"></h1>
+     <div class="flex items-center gap-2"><label data-template-id="color-label" for="color-input" class="canva-text text-sm"></label> <input id="color-input" type="color" value="#2b2b2b" class="w-9 h-9 rounded-lg border border-[var(--ui-border)] cursor-pointer bg-transparent" aria-label="Culoare">
+     </div>
+     <div class="divider"></div><!-- Brush styles (bound) -->
+     <div class="flex items-center gap-1.5 flex-wrap" role="group" aria-label="Stiluri"><button data-template-id="style-pen" class="canva-button style-btn active" data-style="pen" type="button"></button> <button data-template-id="style-pencil" class="canva-button style-btn" data-style="pencil" type="button"></button> <button data-template-id="style-marker" class="canva-button style-btn" data-style="marker" type="button"></button> <button data-template-id="style-brush" class="canva-button style-btn" data-style="brush" type="button"></button> <button data-template-id="style-calligraphy" class="canva-button style-btn" data-style="calligraphy" type="button"></button>
+     </div>
+     <div class="divider"></div>
+     <div class="flex items-center gap-2"><label data-template-id="thickness-label" for="thickness-input" class="canva-text text-sm"></label> <input id="thickness-input" type="range" min="1" max="40" value="4" class="w-24" aria-label="Grosime">
+     </div>
+     <div class="flex items-center gap-2"><label data-template-id="opacity-label" for="opacity-input" class="canva-text text-sm"></label> <input id="opacity-input" type="range" min="10" max="100" value="100" class="w-24" aria-label="Opacitate">
+     </div>
+     <div class="divider"></div>
+     <div class="flex items-center gap-1.5"><button data-template-id="btn-undo" id="btn-undo" class="canva-button tool-btn" type="button" title="Anulează" aria-label="Anulează"><i data-lucide="undo-2"></i></button> <button data-template-id="btn-redo" id="btn-redo" class="canva-button tool-btn" type="button" title="Refă" aria-label="Refă"><i data-lucide="redo-2"></i></button> <button data-template-id="btn-clear" id="btn-clear" class="canva-button tool-btn" type="button" title="Șterge desenul" aria-label="Șterge desenul"><i data-lucide="eraser"></i></button> <button data-template-id="btn-zoomin" id="btn-zoomin" class="canva-button tool-btn" type="button" title="Mărește" aria-label="Mărește"><i data-lucide="zoom-in"></i></button> <button data-template-id="btn-zoomout" id="btn-zoomout" class="canva-button tool-btn" type="button" title="Micșorează" aria-label="Micșorează"><i data-lucide="zoom-out"></i></button> <button data-template-id="btn-fullscreen" id="btn-fullscreen" class="canva-button tool-btn" type="button" title="Ecran complet" aria-label="Ecran complet"><i data-lucide="maximize"></i></button> <button data-template-id="btn-print" id="btn-print" class="canva-button tool-btn" type="button" title="Printează PDF" aria-label="Printează PDF"><i data-lucide="printer"></i></button> <button data-template-id="btn-theme" id="btn-theme" class="canva-button tool-btn" type="button" title="Temă" aria-label="Schimbă tema"><i data-lucide="moon"></i></button>
+     </div>
+    </div>
+   </header><!-- ===== Book stage ===== -->
+   <main class="stage-wrap" id="stage">
+    <div class="zoom-layer" id="zoomLayer">
+     <div class="book-track" id="track" data-template-id="book-stage">
+      <section class="page" data-index="0">
+       <div class="page-inner">
+        <div class="page-frame"><img data-template-id="page-1-image" class="canva-image" loading="lazy">
+         <canvas class="draw-canvas" data-index="0"></canvas>
+        </div>
+       </div>
+      </section>
+      <section class="page" data-index="1">
+       <div class="page-inner">
+        <div class="page-frame"><img data-template-id="page-2-image" class="canva-image" loading="lazy">
+         <canvas class="draw-canvas" data-index="1"></canvas>
+        </div>
+       </div>
+      </section>
+      <section class="page" data-index="2">
+       <div class="page-inner">
+        <div class="page-frame"><img data-template-id="page-3-image" class="canva-image" loading="lazy">
+         <canvas class="draw-canvas" data-index="2"></canvas>
+        </div>
+       </div>
+      </section>
+      <section class="page" data-index="3">
+       <div class="page-inner">
+        <div class="page-frame"><img data-template-id="page-4-image" class="canva-image" loading="lazy">
+         <canvas class="draw-canvas" data-index="3"></canvas>
+        </div>
+       </div>
+      </section>
+      <section class="page" data-index="4">
+       <div class="page-inner">
+        <div class="page-frame"><img data-template-id="page-5-image" class="canva-image" loading="lazy">
+         <canvas class="draw-canvas" data-index="4"></canvas>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </main><!-- ===== Footer ===== -->
+   <footer class="footer-bar canva-footer px-4 py-2 flex items-center justify-between gap-3 flex-shrink-0"><button data-template-id="btn-prev" id="btn-prev" class="canva-button tool-btn" type="button" aria-label="Pagina anterioară"><i data-lucide="chevron-left"></i></button>
+    <div class="flex items-center gap-4"><span id="page-indicator" class="text-sm font-medium" aria-live="polite">1 / 5</span> <span id="save-status" class="text-xs" style="color:var(--ui-muted)" aria-live="polite"></span>
+    </div><button data-template-id="btn-next" id="btn-next" class="canva-button tool-btn" type="button" aria-label="Pagina următoare"><i data-lucide="chevron-right"></i></button>
+   </footer>
+  </div>
+  <script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
+  <script>
 document.addEventListener('DOMContentLoaded', () => {
-lucide.createIcons();
-const PAGE_COUNT = 5;
-const track = document.getElementById('track');
-const stage = document.getElementById('stage');
-const zoomLayer = document.getElementById('zoomLayer');
-const canvases = Array.from(document.querySelectorAll('.draw-canvas'));
-const pageIndicator = document.getElementById('page-indicator');
-const saveStatus = document.getElementById('save-status');
-// Tool state
-const tool = { color:'#2b2b2b', size:4, opacity:1, style:'pen' };
-let current = 0;
-let zoom = 1;
-let touchDistance = 0;
-  let isPinching = false;
-// Per-page stroke stacks: each stroke = {style,color,size,opacity,points:[{x,y,t}]}
-const strokes = Array.from({length:PAGE_COUNT}, () => []);
-const redoStacks = Array.from({length:PAGE_COUNT}, () => []);
-// Backend rows keyed by page_index for update-in-place
-const rows = {}; // page_index -> record
-let sdkReady = false;
-// ---- Canvas setup (hi-res backing store) ----
-const ctxs = [];
-function sizeCanvas(cv){
-const rect = cv.getBoundingClientRect();
-const dpr = Math.min(window.devicePixelRatio || 1, 3);
-const w = Math.max(1, Math.round(rect.width * dpr));
-const h = Math.max(1, Math.round(rect.height * dpr));
-if (cv.width !== w || cv.height !== h){
-cv.width = w; cv.height = h;
-}
-const ctx = cv.getContext('2d');
-ctx.setTransform(1,0,0,1,0,0);
-ctxs[+cv.dataset.index] = ctx;
-}
-function resizeAll(){
-canvases.forEach(cv => { sizeCanvas(cv); redraw(+cv.dataset.index); });
-}
-// ---- Rendering ----
-function applyStyle(ctx, s, scale){
-ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-ctx.globalAlpha = s.opacity;
-ctx.strokeStyle = s.color;
-ctx.fillStyle = s.color;
-ctx.globalCompositeOperation = 'source-over';
-if (s.style === 'marker'){ ctx.globalAlpha = s.opacity * 0.45; ctx.lineWidth = s.size2.2scale; }
-else if (s.style === 'pencil'){ ctx.globalAlpha = s.opacity * 0.85; ctx.lineWidth = Math.max(0.5,s.size*0.5)scale; }
-else if (s.style === 'pen'){ ctx.lineWidth = Math.max(0.8,s.size0.6)scale; }
-else { ctx.lineWidth = s.sizescale; }
-}
-function drawStroke(ctx, s, scale){
-const pts = s.points;
-if (!pts.length) return;
-applyStyle(ctx, s, scale);
-if (s.style === 'pencil'){
-  // textured jitter dots along path for a pencil grain
-  ctx.beginPath();
-  for (let i=1;i<pts.length;i++){
-    const a=pts[i-1], b=pts[i];
-    const steps = Math.max(1, Math.hypot(b.x-a.x,b.y-a.y));
-    for (let j=0;j<steps;j++){
-      const t=j/steps;
-      const x=(a.x+(b.x-a.x)*t)*scale + (Math.random()-.5)*s.size*0.6*scale;
-      const y=(a.y+(b.y-a.y)*t)*scale + (Math.random()-.5)*s.size*0.6*scale;
-      ctx.moveTo(x,y); ctx.lineTo(x+0.6,y+0.6);
-    }
-  }
-  ctx.stroke();
-  return;
-}
+  lucide.createIcons();
 
-if (s.style === 'brush' || s.style === 'calligraphy'){
-  // variable width per segment
-  for (let i=1;i<pts.length;i++){
-    const a=pts[i-1], b=pts[i];
-    let w;
-    if (s.style === 'brush'){
-      const dt = Math.max(1,(b.t-a.t));
-      const speed = Math.hypot(b.x-a.x,b.y-a.y)/dt;
-      w = Math.max(1, s.size*(1.6 - Math.min(1,speed*0.12)))*scale;
-    } else {
-      const ang = Math.atan2(b.y-a.y,b.x-a.x);
-      w = Math.max(1, s.size*(0.35 + Math.abs(Math.cos(ang - Math.PI/4))*1.3))*scale;
+  const PAGE_COUNT = 5;
+  const track = document.getElementById('track');
+  const stage = document.getElementById('stage');
+  const zoomLayer = document.getElementById('zoomLayer');
+  const canvases = Array.from(document.querySelectorAll('.draw-canvas'));
+  const pageIndicator = document.getElementById('page-indicator');
+  const saveStatus = document.getElementById('save-status');
+
+  // Tool state
+  const tool = { color:'#2b2b2b', size:4, opacity:1, style:'pen' };
+  let current = 0;
+  let zoom = 1;
+  let touchDistance = 0;
+
+  // Per-page stroke stacks: each stroke = {style,color,size,opacity,points:[{x,y,t}]}
+  const strokes = Array.from({length:PAGE_COUNT}, () => []);
+  const redoStacks = Array.from({length:PAGE_COUNT}, () => []);
+
+  // Backend rows keyed by page_index for update-in-place
+  const rows = {}; // page_index -> record
+  let sdkReady = false;
+
+  // ---- Canvas setup (hi-res backing store) ----
+  const ctxs = [];
+  function sizeCanvas(cv){
+    const rect = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 3);
+    const w = Math.max(1, Math.round(rect.width * dpr));
+    const h = Math.max(1, Math.round(rect.height * dpr));
+    if (cv.width !== w || cv.height !== h){
+      cv.width = w; cv.height = h;
     }
-    ctx.lineWidth = w;
+    const ctx = cv.getContext('2d');
+    ctx.setTransform(1,0,0,1,0,0);
+    ctxs[+cv.dataset.index] = ctx;
+  }
+  function resizeAll(){
+    canvases.forEach(cv => { sizeCanvas(cv); redraw(+cv.dataset.index); });
+  }
+
+  // ---- Rendering ----
+  function applyStyle(ctx, s, scale){
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.globalAlpha = s.opacity;
+    ctx.strokeStyle = s.color;
+    ctx.fillStyle = s.color;
+    ctx.globalCompositeOperation = 'source-over';
+    if (s.style === 'marker'){ ctx.globalAlpha = s.opacity * 0.45; ctx.lineWidth = s.size*2.2*scale; }
+    else if (s.style === 'pencil'){ ctx.globalAlpha = s.opacity * 0.85; ctx.lineWidth = Math.max(0.5,s.size*0.5)*scale; }
+    else if (s.style === 'pen'){ ctx.lineWidth = Math.max(0.8,s.size*0.6)*scale; }
+    else { ctx.lineWidth = s.size*scale; }
+  }
+
+  function drawStroke(ctx, s, scale){
+    const pts = s.points;
+    if (!pts.length) return;
+    applyStyle(ctx, s, scale);
+
+    if (s.style === 'pencil'){
+      // textured jitter dots along path for a pencil grain
+      ctx.beginPath();
+      for (let i=1;i<pts.length;i++){
+        const a=pts[i-1], b=pts[i];
+        const steps = Math.max(1, Math.hypot(b.x-a.x,b.y-a.y));
+        for (let j=0;j<steps;j++){
+          const t=j/steps;
+          const x=(a.x+(b.x-a.x)*t)*scale + (Math.random()-.5)*s.size*0.6*scale;
+          const y=(a.y+(b.y-a.y)*t)*scale + (Math.random()-.5)*s.size*0.6*scale;
+          ctx.moveTo(x,y); ctx.lineTo(x+0.6,y+0.6);
+        }
+      }
+      ctx.stroke();
+      return;
+    }
+
+    if (s.style === 'brush' || s.style === 'calligraphy'){
+      // variable width per segment
+      for (let i=1;i<pts.length;i++){
+        const a=pts[i-1], b=pts[i];
+        let w;
+        if (s.style === 'brush'){
+          const dt = Math.max(1,(b.t-a.t));
+          const speed = Math.hypot(b.x-a.x,b.y-a.y)/dt;
+          w = Math.max(1, s.size*(1.6 - Math.min(1,speed*0.12)))*scale;
+        } else {
+          const ang = Math.atan2(b.y-a.y,b.x-a.x);
+          w = Math.max(1, s.size*(0.35 + Math.abs(Math.cos(ang - Math.PI/4))*1.3))*scale;
+        }
+        ctx.lineWidth = w;
+        ctx.beginPath();
+        ctx.moveTo(a.x*scale,a.y*scale);
+        ctx.lineTo(b.x*scale,b.y*scale);
+        ctx.stroke();
+      }
+      return;
+    }
+
+    // pen / marker : smooth polyline
     ctx.beginPath();
-    ctx.moveTo(a.x*scale,a.y*scale);
-    ctx.lineTo(b.x*scale,b.y*scale);
+    ctx.moveTo(pts[0].x*scale, pts[0].y*scale);
+    for (let i=1;i<pts.length;i++){
+      const a=pts[i-1], b=pts[i];
+      const mx=(a.x+b.x)/2*scale, my=(a.y+b.y)/2*scale;
+      ctx.quadraticCurveTo(a.x*scale,a.y*scale,mx,my);
+    }
+    const last=pts[pts.length-1];
+    ctx.lineTo(last.x*scale,last.y*scale);
     ctx.stroke();
+    ctx.globalAlpha = 1;
   }
-  return;
-}
 
-// pen / marker : smooth polyline
-ctx.beginPath();
-ctx.moveTo(pts[0].x*scale, pts[0].y*scale);
-for (let i=1;i<pts.length;i++){
-  const a=pts[i-1], b=pts[i];
-  const mx=(a.x+b.x)/2*scale, my=(a.y+b.y)/2*scale;
-  ctx.quadraticCurveTo(a.x*scale,a.y*scale,mx,my);
-}
-const last=pts[pts.length-1];
-ctx.lineTo(last.x*scale,last.y*scale);
-ctx.stroke();
-ctx.globalAlpha = 1;
-}
-function redraw(idx){
-const cv = canvases[idx];
-const ctx = ctxs[idx];
-if (!ctx) return;
-// scale from CSS px -> backing px
-const scale = cv.width / cv.getBoundingClientRect().width;
-ctx.setTransform(1,0,0,1,0,0);
-ctx.clearRect(0,0,cv.width,cv.height);
-strokes[idx].forEach(s => drawStroke(ctx, s, scale));
-ctx.globalAlpha = 1;
-}
-// ---- Drawing input ----
-let drawing = false, activeStroke = null, activeIdx = -1;
-function canvasPoint(cv, e){
-const r = cv.getBoundingClientRect();
-return { x:(e.clientX - r.left), y:(e.clientY - r.top), t:performance.now() };
-}
-canvases.forEach(cv => {
-const idx = +cv.dataset.index;
-cv.addEventListener('pointerdown', (e) => {
-if (idx !== current || isPinching) return;
-e.preventDefault();
-cv.setPointerCapture(e.pointerId);
-drawing = true; activeIdx = idx;
-redoStacks[idx] = [];
-activeStroke = { style:tool.style, color:tool.color, size:tool.size, opacity:tool.opacity, points:[canvasPoint(cv,e)] };
-strokes[idx].push(activeStroke);
-});
-cv.addEventListener('pointermove', (e) => {
-if (!drawing || activeIdx !== idx || isPinching) return;
-e.preventDefault();
-// coalesced events for smoothness
-const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
-events.forEach(ev => activeStroke.points.push(canvasPoint(cv,ev)));
-redraw(idx);
-});
-const end = (e) => {
-if (!drawing || activeIdx !== idx || isPinching) return;
-drawing = false;
-redraw(idx);
-scheduleSave(idx);
-activeStroke = null; activeIdx = -1;
-};
-cv.addEventListener('pointerup', end);
-cv.addEventListener('pointercancel', end);
-cv.addEventListener('pointerleave', (e) => { if(drawing && activeIdx===idx) end(e); });
-});
-// ---- Navigation ----
-function goTo(i){
-current = Math.max(0, Math.min(PAGE_COUNT-1, i));
-track.style.transform = translateX(${-current*100}%);
-pageIndicator.textContent = ${current+1} / ${PAGE_COUNT};
-}
-document.getElementById('btn-prev').addEventListener('click', () => goTo(current-1));
-document.getElementById('btn-next').addEventListener('click', () => goTo(current+1));
-// Swipe on the stage background (not while drawing)
-let swipeStart=null;
-stage.addEventListener('pointerdown', (e) => {
-if (e.target.classList.contains('draw-canvas')) return;
-swipeStart = { x:e.clientX, y:e.clientY };
-});
-stage.addEventListener('pointerup', (e) => {
-if (!swipeStart) return;
-const dx = e.clientX - swipeStart.x;
-if (Math.abs(dx) > 60){ dx < 0 ? goTo(current+1) : goTo(current-1); }
-swipeStart = null;
-});
-// ---- Pinch zoom for touch devices ----
-stage.addEventListener('touchstart', (e) => {
-if (e.touches.length === 2){
-      isPinching = true;
-const dx = e.touches[0].clientX - e.touches[1].clientX;
-const dy = e.touches[0].clientY - e.touches[1].clientY;
-touchDistance = Math.sqrt(dxdx + dydy);
-}
-});
-stage.addEventListener('touchmove', (e) => {
-if (e.touches.length === 2){
-e.preventDefault();
-const dx = e.touches[0].clientX - e.touches[1].clientX;
-const dy = e.touches[0].clientY - e.touches[1].clientY;
-const newDistance = Math.sqrt(dxdx + dydy);
-const scale = newDistance / (touchDistance || newDistance);
-zoom = Math.max(0.6, Math.min(3, zoom * scale));
-applyZoom();
-touchDistance = newDistance;
-}
-});
+  function redraw(idx){
+    const cv = canvases[idx];
+    const ctx = ctxs[idx];
+    if (!ctx) return;
+    // scale from CSS px -> backing px
+    const scale = cv.width / cv.getBoundingClientRect().width;
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,cv.width,cv.height);
+    strokes[idx].forEach(s => drawStroke(ctx, s, scale));
+    ctx.globalAlpha = 1;
+  }
 
-  stage.addEventListener('touchend', (e) => {
-    if (e.touches.length < 2){ isPinching=false; touchDistance=0; }
+  // ---- Drawing input ----
+  let drawing = false, activeStroke = null, activeIdx = -1;
+
+  function canvasPoint(cv, e){
+    const r = cv.getBoundingClientRect();
+    return { x:(e.clientX - r.left), y:(e.clientY - r.top), t:performance.now() };
+  }
+
+  canvases.forEach(cv => {
+    const idx = +cv.dataset.index;
+    cv.addEventListener('pointerdown', (e) => {
+      if (idx !== current) return;
+      e.preventDefault();
+      cv.setPointerCapture(e.pointerId);
+      drawing = true; activeIdx = idx;
+      redoStacks[idx] = [];
+      activeStroke = { style:tool.style, color:tool.color, size:tool.size, opacity:tool.opacity, points:[canvasPoint(cv,e)] };
+      strokes[idx].push(activeStroke);
+    });
+    cv.addEventListener('pointermove', (e) => {
+      if (!drawing || activeIdx !== idx) return;
+      e.preventDefault();
+      // coalesced events for smoothness
+      const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+      events.forEach(ev => activeStroke.points.push(canvasPoint(cv,ev)));
+      redraw(idx);
+    });
+    const end = (e) => {
+      if (!drawing || activeIdx !== idx) return;
+      drawing = false;
+      redraw(idx);
+      scheduleSave(idx);
+      activeStroke = null; activeIdx = -1;
+    };
+    cv.addEventListener('pointerup', end);
+    cv.addEventListener('pointercancel', end);
+    cv.addEventListener('pointerleave', (e) => { if(drawing && activeIdx===idx) end(e); });
   });
-  stage.addEventListener('touchcancel', () => {
-    isPinching=false; touchDistance=0;
+
+  // ---- Navigation ----
+  function goTo(i){
+    current = Math.max(0, Math.min(PAGE_COUNT-1, i));
+    track.style.transform = `translateX(${-current*100}%)`;
+    pageIndicator.textContent = `${current+1} / ${PAGE_COUNT}`;
+  }
+  document.getElementById('btn-prev').addEventListener('click', () => goTo(current-1));
+  document.getElementById('btn-next').addEventListener('click', () => goTo(current+1));
+
+  // Swipe on the stage background (not while drawing)
+  let swipeStart=null;
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.target.classList.contains('draw-canvas')) return;
+    swipeStart = { x:e.clientX, y:e.clientY };
+  });
+  stage.addEventListener('pointerup', (e) => {
+    if (!swipeStart) return;
+    const dx = e.clientX - swipeStart.x;
+    if (Math.abs(dx) > 60){ dx < 0 ? goTo(current+1) : goTo(current-1); }
+    swipeStart = null;
+  });
+
+  // ---- Pinch zoom for touch devices ----
+  stage.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2){
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      touchDistance = Math.sqrt(dx*dx + dy*dy);
+    }
+  });
+  stage.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2){
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const newDistance = Math.sqrt(dx*dx + dy*dy);
+      const scale = newDistance / (touchDistance || newDistance);
+      zoom = Math.max(0.6, Math.min(3, zoom * scale));
+      applyZoom();
+      touchDistance = newDistance;
+    }
   });
 
   // ---- Zoom / fullscreen ----
-function applyZoom(){ zoomLayer.style.transform = scale(${zoom}); }
-document.getElementById('btn-zoomin').addEventListener('click', ()=>{ zoom=Math.min(3,zoom+0.2); applyZoom(); });
-document.getElementById('btn-zoomout').addEventListener('click', ()=>{ zoom=Math.max(0.6,zoom-0.2); applyZoom(); });
-document.getElementById('btn-fullscreen').addEventListener('click', ()=>{
-if (!document.fullscreenElement){ document.documentElement.requestFullscreen?.(); }
-else { document.exitFullscreen?.(); }
-});
-// ---- Undo / redo / clear ----
-document.getElementById('btn-undo').addEventListener('click', ()=>{
-if (strokes[current].length){ redoStacks[current].push(strokes[current].pop()); redraw(current); scheduleSave(current); }
-});
-document.getElementById('btn-redo').addEventListener('click', ()=>{
-if (redoStacks[current].length){ strokes[current].push(redoStacks[current].pop()); redraw(current); scheduleSave(current); }
-});
-document.getElementById('btn-clear').addEventListener('click', ()=>{
-if (strokes[current].length){ redoStacks[current]=[]; strokes[current]=[]; redraw(current); scheduleSave(current); }
-});
-// ---- Print (current page) ----
-document.getElementById('btn-print').addEventListener('click', ()=>{
-document.querySelectorAll('.page').forEach((p,i)=> p.classList.toggle('print-active', i===current));
-window.print();
-});
-// ---- Tool bindings ----
-document.getElementById('color-input').addEventListener('input', e => tool.color = e.target.value);
-document.getElementById('thickness-input').addEventListener('input', e => tool.size = +e.target.value);
-document.getElementById('opacity-input').addEventListener('input', e => tool.opacity = +e.target.value/100);
-document.querySelectorAll('.style-btn').forEach(btn => {
-btn.addEventListener('click', () => {
-document.querySelectorAll('.style-btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-tool.style = btn.dataset.style;
-});
-});
-// Theme toggle
-document.getElementById('btn-theme').addEventListener('click', ()=>{
-document.body.classList.toggle('theme-dark');
-localStorage.setItem('calli-theme', document.body.classList.contains('theme-dark') ? 'dark':'light');
-});
-if (localStorage.getItem('calli-theme') === 'dark') document.body.classList.add('theme-dark');
-window.addEventListener('resize', resizeAll);
-// ============ Data SDK persistence ============
-const saveTimers = {};
-function setStatus(txt){ saveStatus.textContent = txt; }
-function scheduleSave(idx){
-setStatus('Se salvează…');
-clearTimeout(saveTimers[idx]);
-saveTimers[idx] = setTimeout(()=>savePage(idx), 700);
-}
-async function savePage(idx){
-if (!sdkReady) { setStatus(''); return; }
-const payload = {
-page_index: idx,
-drawing_data: JSON.stringify(strokes[idx]),
-updated_at: new Date().toISOString()
-};
-try {
-let result;
-if (rows[idx]){
-result = await window.dataSdk.update({ ...rows[idx], ...payload });
-} else {
-result = await window.dataSdk.create(payload);
-}
-setStatus(result.isOk ? 'Salvat ✓' : 'Eroare la salvare');
-} catch(_) {
-setStatus('Eroare la salvare');
-}
-}
-const handler = {
-onDataChanged(data){
-data.forEach(rec => {
-const idx = Number(rec.page_index);
-if (idx < 0 || idx >= PAGE_COUNT) return;
-rows[idx] = rec;
-// Only load if we don't have unsaved local content for that page
-if (strokes[idx].length === 0 && rec.drawing_data){
-try {
-const parsed = JSON.parse(rec.drawing_data);
-if (Array.isArray(parsed)){ strokes[idx] = parsed; redraw(idx); }
-} catch(_){}
-}
-});
-}
-};
-// Initialise after canvases sized (wait a frame so images/layout settle)
-requestAnimationFrame(async () => {
-resizeAll();
-goTo(0);
-try {
-const res = await window.dataSdk.init(handler);
-sdkReady = res.isOk;
-} catch(_){ sdkReady = false; }
-});
-// Re-size once images load (dimensions may change)
-window.addEventListener('load', () => setTimeout(resizeAll, 200));
+  function applyZoom(){ zoomLayer.style.transform = `scale(${zoom})`; }
+  document.getElementById('btn-zoomin').addEventListener('click', ()=>{ zoom=Math.min(3,zoom+0.2); applyZoom(); });
+  document.getElementById('btn-zoomout').addEventListener('click', ()=>{ zoom=Math.max(0.6,zoom-0.2); applyZoom(); });
+  document.getElementById('btn-fullscreen').addEventListener('click', ()=>{
+    if (!document.fullscreenElement){ document.documentElement.requestFullscreen?.(); }
+    else { document.exitFullscreen?.(); }
+  });
+
+  // ---- Undo / redo / clear ----
+  document.getElementById('btn-undo').addEventListener('click', ()=>{
+    if (strokes[current].length){ redoStacks[current].push(strokes[current].pop()); redraw(current); scheduleSave(current); }
+  });
+  document.getElementById('btn-redo').addEventListener('click', ()=>{
+    if (redoStacks[current].length){ strokes[current].push(redoStacks[current].pop()); redraw(current); scheduleSave(current); }
+  });
+  document.getElementById('btn-clear').addEventListener('click', ()=>{
+    if (strokes[current].length){ redoStacks[current]=[]; strokes[current]=[]; redraw(current); scheduleSave(current); }
+  });
+
+  // ---- Print (current page) ----
+  document.getElementById('btn-print').addEventListener('click', ()=>{
+    document.querySelectorAll('.page').forEach((p,i)=> p.classList.toggle('print-active', i===current));
+    window.print();
+  });
+
+  // ---- Tool bindings ----
+  document.getElementById('color-input').addEventListener('input', e => tool.color = e.target.value);
+  document.getElementById('thickness-input').addEventListener('input', e => tool.size = +e.target.value);
+  document.getElementById('opacity-input').addEventListener('input', e => tool.opacity = +e.target.value/100);
+  document.querySelectorAll('.style-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.style-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      tool.style = btn.dataset.style;
+    });
+  });
+
+  // Theme toggle
+  document.getElementById('btn-theme').addEventListener('click', ()=>{
+    document.body.classList.toggle('theme-dark');
+    localStorage.setItem('calli-theme', document.body.classList.contains('theme-dark') ? 'dark':'light');
+  });
+  if (localStorage.getItem('calli-theme') === 'dark') document.body.classList.add('theme-dark');
+
+  window.addEventListener('resize', resizeAll);
+
+  // ============ Data SDK persistence ============
+  const saveTimers = {};
+  function setStatus(txt){ saveStatus.textContent = txt; }
+
+  function scheduleSave(idx){
+    setStatus('Se salvează…');
+    clearTimeout(saveTimers[idx]);
+    saveTimers[idx] = setTimeout(()=>savePage(idx), 700);
+  }
+
+  async function savePage(idx){
+    if (!sdkReady) { setStatus(''); return; }
+    const payload = {
+      page_index: idx,
+      drawing_data: JSON.stringify(strokes[idx]),
+      updated_at: new Date().toISOString()
+    };
+    try {
+      let result;
+      if (rows[idx]){
+        result = await window.dataSdk.update({ ...rows[idx], ...payload });
+      } else {
+        result = await window.dataSdk.create(payload);
+      }
+      setStatus(result.isOk ? 'Salvat ✓' : 'Eroare la salvare');
+    } catch(_) {
+      setStatus('Eroare la salvare');
+    }
+  }
+
+  const handler = {
+    onDataChanged(data){
+      data.forEach(rec => {
+        const idx = Number(rec.page_index);
+        if (idx < 0 || idx >= PAGE_COUNT) return;
+        rows[idx] = rec;
+        // Only load if we don't have unsaved local content for that page
+        if (strokes[idx].length === 0 && rec.drawing_data){
+          try {
+            const parsed = JSON.parse(rec.drawing_data);
+            if (Array.isArray(parsed)){ strokes[idx] = parsed; redraw(idx); }
+          } catch(_){}
+        }
+      });
+    }
+  };
+
+  // Initialise after canvases sized (wait a frame so images/layout settle)
+  requestAnimationFrame(async () => {
+    resizeAll();
+    goTo(0);
+    try {
+      const res = await window.dataSdk.init(handler);
+      sdkReady = res.isOk;
+    } catch(_){ sdkReady = false; }
+  });
+
+  // Re-size once images load (dimensions may change)
+  window.addEventListener('load', () => setTimeout(resizeAll, 200));
 });
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a189249a63da623e',t:'MTc4MzYxOTEzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a189249a63da623e',t:'MTc4MzYxOTEzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
